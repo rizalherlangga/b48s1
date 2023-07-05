@@ -1,6 +1,6 @@
 //func untuk peringatan alert jika ada kolom yang belum diisi
 
-function alertWarning() {
+function emptyFromAlert() {
     let projectName = document.getElementById("project").value;
     let projectStart = document.getElementById("start-date").value;
     let projectEnd = document.getElementById("end-date").value;
@@ -9,19 +9,19 @@ function alertWarning() {
 
     let say = [];
 
-    if (projectName = "") {
+    if (projectName == "") {
         say.push("projectName");
     }
-    if (projectStart = "") {
+    if (projectStart == "") {
         say.push("projectStart");
     }
-    if (projectEnd = "") {
+    if (projectEnd == "") {
         say.push("projectEnd");
     }
-    if (projectDescription = "") {
+    if (projectDescription == "") {
         say.push("projectDescription");
     }
-    if (projectImage = "") {
+    if (projectImage == "") {
         say.push("projectImage");
     }
 
@@ -30,21 +30,22 @@ function alertWarning() {
         alert(`Kolom ${hay} semuanya harus diisi yah bang !`);
         return;
     }
+
 }
 
 
 // menampung array of object yang sudah di submit
 
-const projectData = [];
+let projectData = [];
 
-//untuk mengambil/menyimpan data dan akan idi tampung di projectData
+//untuk mengambil/menyimpan data dan akan di tampung di projectData
 
 function postProject(event) {
     event.preventDefault();
 
     let projectName = document.getElementById("project").value;
     let projectDescription = document.getElementById("desc").value;
-    let projectImage = document.getElementById("img").value;
+    let projectImage = document.getElementById("img").files;
 
     const jsIcon = '<i class="fa-brands fa-square-js fa-xl fa-fw"></i>';
     const bootstrapIcon = '<i class="fa-brands fa-bootstrap fa-xl fa-fw"></i>';
@@ -59,7 +60,7 @@ function postProject(event) {
     projectImage = URL.createObjectURL(projectImage[0]);
     console.log(projectImage);
 
-    let projectPriviewData = {
+    let projectPreviewData = {
         projectName,
         projectDescription,
         jsCheckIcon,
@@ -69,8 +70,39 @@ function postProject(event) {
         projectImage,
     };
 
-    projectData.push(projectPriviewData);
-    console.log(ProjectData);
+    projectData.push(projectPreviewData);
+    console.log(projectData);
+
+    renderProject();
+}
+
+function renderProject() {
+    let html = "";
+
+    for (let index = 0; index < projectData.length; index++) {
+        html += `
+          <div class="project-card">
+          <img src="${projectData[index].projectImage}" alt="1"/>
+          <a href="project-detail.html" style="color: black">
+              <h4>${projectData[index].projectName}</h4>
+          </a>
+          <p > 3 Bulan - Rizal Herlangga</p>
+          <p class="deskripsi">${projectData[index].projectDescription}</p>
+          <div class="gambar">
+              ${projectData[index].jsCheckIcon}
+              ${projectData[index].bootstrapCheckIcon}
+              ${projectData[index].goCheckIcon}
+              ${projectData[index].reactcheckIcon}
+          </div>
+          <div class="ini-data">
+              <button class="edit-button">Edit</button>
+              <button class="delete-button">Delete</button>
+          </div>
+          </div>`;
+      }
+    
+
+    document.getElementById("kartu-t").innerHTML = html;
 }
 
 
