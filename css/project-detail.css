@@ -30,6 +30,16 @@
   width: 800px;
 }
 
+.left1 > p {
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+}
+
+.left2 > p {
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+}
+
 .card-left {
   margin-left: 80px;
   width: 400px;
