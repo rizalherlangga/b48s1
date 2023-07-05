@@ -83,7 +83,7 @@ function renderProject() {
         html += `
           <div class="project-card">
           <img src="${projectData[index].projectImage}" alt="1"/>
-          <a href="project-detail.html" style="color: black">
+          <a href="project-detail.html" style="color: black ; text-decoration: none">
               <h4>${projectData[index].projectName}</h4>
           </a>
           <p > 3 Bulan - Rizal Herlangga</p>
