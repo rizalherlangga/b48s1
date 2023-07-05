@@ -10,19 +10,19 @@ function emptyFromAlert() {
     let say = [];
 
     if (projectName == "") {
-        say.push("projectName");
+        say.push("Name Project");
     }
     if (projectStart == "") {
-        say.push("projectStart");
+        say.push("Start Project");
     }
     if (projectEnd == "") {
-        say.push("projectEnd");
+        say.push("End Project");
     }
     if (projectDescription == "") {
-        say.push("projectDescription");
+        say.push("Description Project");
     }
     if (projectImage == "") {
-        say.push("projectImage");
+        say.push("Image Project");
     }
 
     if (say.length > 0) {
@@ -44,6 +44,8 @@ function postProject(event) {
     event.preventDefault();
 
     let projectName = document.getElementById("project").value;
+    let projectStart = document.getElementById("start-date").value;
+    let projectEnd = document.getElementById("end-date").value;
     let projectDescription = document.getElementById("desc").value;
     let projectImage = document.getElementById("img").files;
 
@@ -60,8 +62,36 @@ function postProject(event) {
     projectImage = URL.createObjectURL(projectImage[0]);
     console.log(projectImage);
 
+    let startDate = new Date(projectStart);
+    let endDate = new Date(projectEnd);
+
+    let differenceInDate = (startDate - endDate) / 1000;
+    let year = Math.abs(Math.round(differenceInDate / (60 * 60 * 24) / 365.25));
+    let month = Math.abs(Math.round(differenceInDate / (60 * 60 * 24 * 7 * 4)));
+    let week = Math.abs(Math.round(differenceInDate / (60 * 60 * 24 * 7)));
+    let days = Math.abs(Math.round(differenceInDate / (3600 * 24)));
+    let differenceInDay
+
+    if (days <= 7) {
+        differenceInDay = days + " days";
+    } 
+    if (days >= 8) {
+        differenceInDay = week + " week";
+    }  
+    if (week >= 4) {
+        differenceInDay = month + " month";
+    } 
+    if (month >= 12) {
+        differenceInDay = year + " year";
+    }
+
+    console.log((differenceInDay));
+
+
+
     let projectPreviewData = {
         projectName,
+        differenceInDay,
         projectDescription,
         jsCheckIcon,
         bootstrapCheckIcon,
@@ -86,7 +116,7 @@ function renderProject() {
           <a href="project-detail.html" style="color: black ; text-decoration: none">
               <h4>${projectData[index].projectName}</h4>
           </a>
-          <p > 3 Bulan - Rizal Herlangga</p>
+          <p > ${projectData[index].differenceInDay} - Rizal Herlangga</p>
           <p class="deskripsi">${projectData[index].projectDescription}</p>
           <div class="gambar">
               ${projectData[index].jsCheckIcon}
