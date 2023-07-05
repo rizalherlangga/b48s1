@@ -86,6 +86,7 @@ label[for=react] {
 
 label[for=go] {
   font-size: 30px;
+  margin-right: 43px;
 }
 
 label[for=bootstrap] {
@@ -94,6 +95,8 @@ label[for=bootstrap] {
 
 label[for=js] {
   font-size: 30px;
+  margin-right: 10px;
+
 }
 
 
