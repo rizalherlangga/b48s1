@@ -44,6 +44,7 @@ input[type=date] {
     border: none;
     border-radius: 10px;
     box-shadow: 0 5px 10px;
+    background-color: white;
 }
 
 .start {
@@ -59,6 +60,7 @@ textarea {
     border: none;
     border-radius: 10px;
     box-shadow: 0 5px 10px;
+    background-color: white;
 }
 
 input[type=checkbox] {
@@ -82,26 +84,30 @@ input[type=file] {
 label[for=react] {
   font-size: 30px;
   margin-right: 18px;
+  font-family: 'Poppins', sans-serif;
 }
 
 label[for=go] {
   font-size: 30px;
-  margin-right: 43px;
+  margin-right: 60px;
+  font-family: 'Poppins', sans-serif;
 }
 
 label[for=bootstrap] {
   font-size: 30px;
+  font-family: 'Poppins', sans-serif;
 }
 
 label[for=js] {
   font-size: 30px;
   margin-right: 10px;
-
+  font-family: 'Poppins', sans-serif;
 }
 
 
 label {
     font-size: 35px;
+    font-family: 'Poppins', sans-serif;
 }
 
 form > button {
@@ -249,6 +255,10 @@ form  button:hover {
     textarea {
       width: 320px;
     }
+
+    input[type=checkbox] {
+      width: 30px;
+    }
     
     
     input[type=file] {
@@ -261,12 +271,15 @@ form  button:hover {
     }
     
     .data-container {
-      width: 250px;
+      width: 350px;
+      padding: 0;
+      padding-top: 40px;
     }
     
     .kartu-t {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
+      width: 100%;
     }
 
     .project-card {
@@ -275,25 +288,29 @@ form  button:hover {
 
     label{
       font-size: 20px;
+      font-family: 'Poppins', sans-serif;
     }
 
     label[for=react] {
-      font-size: 15px;
+      font-size: 20px;
       margin-right: 18px;
+  
     }
     
     label[for=go] {
-      font-size: 15px;
-      margin-right: 32px;
+      font-size: 20px;
+      margin-right: 49px;
+     
     }
     
     label[for=bootstrap] {
-      font-size: 15px;
+      font-size: 20px;
     }
     
     label[for=js] {
-      font-size: 15px;
+      font-size: 20px;
       margin-right: 14px;
+     
     
     }
 

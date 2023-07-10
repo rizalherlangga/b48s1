@@ -123,6 +123,11 @@ body {
         margin: 20px;
     }
 
+    .desc {
+        width: fit-content;
+        padding: 10px;
+    }
+
     .desc > h2 {
         text-align: center;
         margin-bottom: 15px;
