@@ -273,6 +273,29 @@ form  button:hover {
       width: fit-content;
     }
 
+    label{
+      font-size: 20px;
+    }
+
+    label[for=react] {
+      font-size: 10px;
+      margin-right: 18px;
+    }
+    
+    label[for=go] {
+      font-size: 10px;
+      margin-right: 43px;
+    }
+    
+    label[for=bootstrap] {
+      font-size: 10px;
+    }
+    
+    label[for=js] {
+      font-size: 10px;
+      margin-right: 10px;
+    
+    }
   }
   
  
