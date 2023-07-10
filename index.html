@@ -17,15 +17,25 @@
                     <img src="images/dumbways.png" alt="">
                 </a> 
                 <ul>
-                    <li><h3><a href="index.html">Home</a></h3></li>
-                    <li><a href="my-project.html">My Project</a></li>
+                    <li class="collapse"><h3><a href="index.html">Home</a></h3></li>
+                    <li class="collapse" ><a href="my-project.html">My Project</a></li>
                 </ul>
             </div>
-            <div class="nav-right">
-                <a href="contact.html">Contact Me</a>
+            <div class="nav-right" >
+                <a class="collapse" href="contact.html">Contact Me</a>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <button onclick="dropdownMenu()">
+                    <i class="fa-2x fa-solid fa-bars"></i>
+                </button>
             </div>
         </div>
     </nav>
+    <div class="dropdown" id="dropdown">
+        <a href="index.html">HOME</a>
+        <a href="my-project.html">My Project</a>
+        <a href="contact.html">Contact Me</a>
+    </div>
 
     <div class="card">
         <div class="desc"><h2>Hi Welcome to my hut</h2>
@@ -63,5 +73,6 @@
             <p>Fullstack Developer</p>
         </div>
     </div>
+    <script src="js/nav-dropdpwn.js"></script>
 </body>
 </html>

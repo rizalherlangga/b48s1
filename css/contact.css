@@ -56,7 +56,7 @@ textarea {
     box-shadow: 0px 5px 5px;
 }
 
-button {
+form  button {
     display: flex;
     justify-content: end;
     margin-left: 768px;
@@ -69,7 +69,53 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+form  button:hover {
     background-color: orangered;
 }
+
+@media only screen and (max-width: 875px) {
+    form {
+      width: 600px;
+    }
+
+    input {
+      width: 580px;
+    }
+
+    select {
+        width: 600px;
+    }
+
+    textarea {
+      width: 580px;
+    }
+    
+    form  button {
+      margin-left: 518px;
+    }
+
+  }
+  @media only screen and (max-width: 650px) {
+    form {
+      width: 350px;
+    }
+
+    input {
+      width: 320px;
+    }
+
+    select {
+        width: 340px;
+    }
+
+    textarea {
+      width: 320px;
+    }
+    
+    form  button {
+      margin-left: 260px;
+    }
+   
+
+  }
 

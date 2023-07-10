@@ -74,3 +74,52 @@ nav {
     background-color: orangered;
 }
 
+.dropdown {
+    width: 100%;
+    background-color: #D3D3D3;
+    display: none;
+}
+
+.dropdown > a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+}
+
+.dropdown > a:hover {
+    width: 150px;
+    background-color: #111727;
+    color: white;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.dropdown-menu {
+    display: none;
+}
+
+@media only screen and (max-width: 1265px) {
+    .nav-left {
+        margin-right: 90px;
+    }
+}
+
+@media only screen and (max-width: 1070px) {
+    .nav-left {
+        margin-right: 50px;
+    }
+}
+
+@media only screen and (max-width: 875px) {
+    .collapse {
+        display: none;
+    }
+
+    .dropdown-menu {
+        display: block;
+    }
+}

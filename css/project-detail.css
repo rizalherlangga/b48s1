@@ -120,6 +120,8 @@
   .card {
     width: 800px;
     display: block;
+    margin-bottom: 10px;
+    height: 550px;
   }
   .card-right img {
     width: 100%;
@@ -127,36 +129,53 @@
   .card-left {
     width: 500px;
     display: flex;
+    margin: auto;
+    height: 150px;
     gap: 15px;
     margin-top: 20px;
   }
-  .isi {
-    width: 500px;
+
+  .about {
+    margin:auto;
+    width: 600px;
   }
+
+  .isi {
+    width: fit-content;
+  }
+  
 }
 @media only screen and (max-width: 650px) {
   .card {
-    width: 250px;
+    width: 350px;
     display: block;
+  
+    padding: 0;
+    height: 450px;
+    margin-top: 20px;
   }
   .card-right img {
     width: 100%;
   }
   .card-left {
     width: 100%;
-    display: flex;
+    display: block;
     gap: 15px;
-    margin-top: 20px;
-
+  
     margin: 0 auto;
   }
   .tc-1 {
-    display: block;
+    display: flex;
   }
   .tc-2 {
-    display: block;
+    display: flex;
   }
+  .about {
+    margin:auto;
+    width: 350px;
+  }
+
   .isi {
-    width: 300px;
+    width: fit-content;
   }
 }

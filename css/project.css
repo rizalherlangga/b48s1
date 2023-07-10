@@ -117,7 +117,7 @@ form > button {
     cursor: pointer;
 }
 
-button:hover {
+form  button:hover {
     background-color: orangered;
 }
 
@@ -191,10 +191,89 @@ button:hover {
     border: none;
   }
 
-  .ini-data > button:hover {
+  .ini-data  button:hover {
     background-color: orangered;
   }
   
+
+  @media only screen and (max-width: 875px) {
+    form {
+      width: 600px;
+    }
+
+    input[type=text] {
+      width: 580px;
+    }
+
+   input[type=date] {
+     width: 275px;
+    }
+
+    textarea {
+      width: 580px;
+    }
+    
+    
+    input[type=file] {
+      width: 580px;
+    
+    }
+    
+    form > button {
+      margin-left: 518px;
+    }
+    
+    .data-container {
+      width: 600px;
+    }
+    
+    .kartu-t {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+  }
+  @media only screen and (max-width: 650px) {
+    form {
+      width: 350px;
+    }
+
+    input[type=text] {
+      width: 320px;
+    }
+
+   input[type=date] {
+     width: 145px;
+    }
+
+    textarea {
+      width: 320px;
+    }
+    
+    
+    input[type=file] {
+      width: 320px;
+    
+    }
+    
+    form > button {
+      margin-left: 268px;
+    }
+    
+    .data-container {
+      width: 250px;
+    }
+    
+    .kartu-t {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .project-card {
+      width: fit-content;
+    }
+
+  }
   
  
 
