@@ -162,6 +162,12 @@ form  button:hover {
     box-shadow: 5px 5px 5px 5px #cbcbcb;
     padding: 15px;
   }
+
+  .project-card:hover {
+   box-shadow: 10px 10px 50px black; 
+   opacity: 0.9;
+  }
+
   .project-card > img {
     width: 100%;
     height: 250px;
