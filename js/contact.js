@@ -1,32 +1,75 @@
-function submitData(Event) {
-    Event.preventDefault()
+// console.log("Hello Student");
+// alert("Good Morning");
+// document.write("Batch 47");
 
-    let name = document.getElementById("name").value
-    let mail = document.getElementById("email").value
-    let no = document.getElementById("no").value
-    let subject = document.getElementById('sub').value
-    let message = document.getElementById("message").value
+// var gelas = "air putih";
+// var gelas = "kopi";
+// console.log(gelas);
 
-    let objectData = {
-        name,
-        mail,
-        no,
-        subject,
-        message
-    }
+// let pemerintah = "PDIP";
+// pemerintah = "NASDEM";
+// console.log(pemerintah);
 
-    console.log(objectData)
+// let nama = "Rizal";
+// let umur = 15;
+// let isMarried = false;
 
-    let say = [];
+// console.log("nama saya rizal saya umur 15 tahun");
+// console.log("nama saya {nama} saya ${umur} tahun");
+
+// let x = 20;
+// let y = 26;
+
+// let result = x + y;
+
+// console.log(result);
+
+// let nilai = 75;
+
+// if (nilai >= 75) {
+//   console.log("kamu lulus");
+// } else {
+//   console.log("tidak lulus");
+// }
+
+// function Hello() {
+//   let x = 5;
+//   let y = 10;
+
+//   let result = x * y;
+
+//   console.log(result);
+// }
+
+// Hello();
+
+// function Hello2(x, y) {
+//   console.log(x);
+//   console.log(y);
+
+//   let result = x * y;
+//   console.log(result);
+// }
+
+// Hello2(5, 10);
+
+function submitData() {
+  let name = document.getElementById("input-name").value;
+  let email = document.getElementById("input-email").value;
+  let phone = document.getElementById("input-no").value;
+  let subject = document.getElementById("subjek").value;
+  let message = document.getElementById("message").value;
+
+  let say = [];
 
   if (name == "") {
-    say.push("name");
+    say.push("nama");
   }
-  if (mail == "") {
-    say.push("mail");
+  if (email == "") {
+    say.push("email");
   }
-  if (no == "") {
-    say.push("no");
+  if (phone == "") {
+    say.push("phone");
   }
   if (subject == "") {
     say.push("subject");
@@ -41,10 +84,25 @@ function submitData(Event) {
     return;
   }
 
-    const emailReceiver = "rizsut03@gmail.com"
+  let emailReceiver = "rizsut03@gmail.com";
 
-    let a = document.createElement("a")
+  let a = document.createElement("a");
+  a.href = `mailto:${emailReceiver}?subject=${subject}&body=Halo, nama saya ${name}, ${message}. Silahkan kontak saya di nomor ${phone}, terimakasih`;
+  a.click();
 
-    a.href = `mailto:${emailReceiver}?subject=${subject}&body=Halo nama saya ${name},\n${message}, silahkan kontak saya di nomor berikut : ${no}`
-    a.click()
+  console.log(name);
+  console.log(email);
+  console.log(phone);
+  console.log(subject);
+  console.log(message);
+
+  let emailer = {
+    name,
+    email,
+    phone,
+    subject,
+    message,
+  };
+
+  console.log(emailer);
 }
