@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
 .data {
   background-color: #e3e7eb !important;
-  margin-top: 0px !;
+  margin-top: -10px !important;
 }
 .container-form {
   margin: 10px auto !important;

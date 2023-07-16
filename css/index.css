@@ -48,6 +48,11 @@
   color: #212529 !important;
 }
 
+.fs-3 > img {
+  width: 30px;
+  margin-left: 15px;
+}
+
 @media (max-width: 991.98px) {
   .gap-3 {
     display: block !important;

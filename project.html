@@ -19,8 +19,9 @@
     <link rel="stylesheet" href="css/project.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
+    <form onsubmit="postProject(event)">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
         <a class="navbar-brand" href="https://dumbways.id/" target="_blank"
           ><img src="assets/images/brandred.png" alt="dumbways" width="50px"
         /></a>
@@ -33,7 +34,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -78,14 +79,14 @@
               type="text"
               id="input-nama"
               placeholder="masukan nama anda"
-            />
+              />
           </div>
           <div class="tanggal d-flex mt-4">
             <div class="w-50 me-3">
               <label for="input-start" class="d-block"
                 ><h2>Start Date</h2></label
-              >
-              <input type="date" id="input-start" />
+                >
+                <input type="date" id="input-start" />
             </div>
             <div class="w-50">
               <label for="input-end" class="d-block"><h2>End Date</h2></label>
@@ -94,7 +95,7 @@
           </div>
           <div class="desc mt-4">
             <label for="input-deskripsi" class="d-block"
-              ><h2>Description</h2></label
+            ><h2>Description</h2></label
             >
             <textarea
               id="input-deskripsi"
@@ -132,19 +133,21 @@
           </div>
           <div class="submit mt-3 d-flex justify-content-end">
             <button
-              onclick="emptyFormAlert()"
+              onclick="emptyFromAlert()"
               class="border-0 rounded-3 bg-dark text-white p-2"
-            >
+              >
               Submit
             </button>
           </div>
         </div>
       </div>
     </div>
+  </form>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
+    <script src="js/project.js"></script>
   </body>
 </html>
