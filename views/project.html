@@ -15,15 +15,14 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/nav.css" />
-    <link rel="stylesheet" href="css/project.css" />
+    <link rel="stylesheet" href="../public/css/nav.css" />
+    <link rel="stylesheet" href="../public/css/project.css" />
   </head>
   <body>
-    <form onsubmit="postProject(event)">
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
         <a class="navbar-brand" href="https://dumbways.id/" target="_blank"
-          ><img src="assets/images/brandred.png" alt="dumbways" width="50px"
+          ><img src="../public/images/brandred.png" alt="dumbways" width="50px"
         /></a>
         <button
           class="navbar-toggler"
@@ -34,7 +33,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-        <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -42,24 +41,24 @@
               <a
                 class="nav-link active text-center"
                 aria-current="page"
-                href="index.html"
+                href="/"
                 >Home</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-center" href="project.html"
+              <a class="nav-link text-center" href="project"
                 >Add Project</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-center" href="testimonial.html"
+              <a class="nav-link text-center" href="testimonial"
                 >Testimonial</a
               >
             </li>
           </ul>
           <div class="d-flex justify-content-center">
             <button class="bg-dark text-white border-0 rounded-2">
-              <a href="contact.html" class="text-white text-decoration-none">
+              <a href="contact" class="text-white text-decoration-none">
                 Contact Me
               </a>
             </button>
@@ -67,7 +66,9 @@
         </div>
       </div>
     </nav>
-    <div class="data">
+
+    <form action="/addProject" method="post">
+     <div class="data">
       <div class="container">
         <div class="container-form p-5 w-75">
           <h1 class="text-center">ADD MY PROJECT</h1>
@@ -78,6 +79,7 @@
             <input
               type="text"
               id="input-nama"
+              name="input-nama"
               placeholder="masukan nama anda"
               />
           </div>
@@ -86,11 +88,11 @@
               <label for="input-start" class="d-block"
                 ><h2>Start Date</h2></label
                 >
-                <input type="date" id="input-start" />
+                <input type="date" id="input-start" name="input-start" />
             </div>
             <div class="w-50">
               <label for="input-end" class="d-block"><h2>End Date</h2></label>
-              <input type="date" id="input-end" />
+              <input type="date" id="input-end" name="input-end" />
             </div>
           </div>
           <div class="desc mt-4">
@@ -99,6 +101,7 @@
             >
             <textarea
               id="input-deskripsi"
+              name="input-deskripsi"
               placeholder="masukkann deskripsi anda"
             ></textarea>
           </div>
@@ -106,21 +109,21 @@
             <h2>Technologies</h2>
             <div class="ak1 d-flex mb-3 mt-3">
               <div class="d-flex ms-1 me-4">
-                <input type="checkbox" id="input-js" />
+                <input type="checkbox" id="input-js" name="tech" value="JavaScript" />
                 <label for="input-js" class="w-50">JavaScript</label>
               </div>
               <div class="d-flex">
-                <input type="checkbox" id="input-bootstrap" />
+                <input type="checkbox" id="input-bootstrap" name="tech" value="Bootstrap"/>
                 <label for="input-bootstrap" class="w-50">BootStrap</label>
               </div>
             </div>
             <div class="ak2 d-flex">
               <div class="d-flex ms-2 me-5">
-                <input type="checkbox" id="input-golang" />
+                <input type="checkbox" id="input-golang" name="tech" value="Golang"/>
                 <label for="input-golang" class="w-50">Golang</label>
               </div>
               <div class="d-flex ps-1">
-                <input type="checkbox" id="input-react" />
+                <input type="checkbox" id="input-react" name="tech" value="React"/>
                 <label for="input-react" class="w-50">React</label>
               </div>
             </div>
@@ -148,6 +151,6 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
-    <script src="js/project.js"></script>
+    <script src="../public/js/project.js"></script>
   </body>
 </html>
