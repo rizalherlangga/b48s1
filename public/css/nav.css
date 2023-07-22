@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
-
 .navbar {
   background-color: #f4f3f3 !important;
 }
@@ -18,12 +16,4 @@
 
 .text-white:hover {
   background-color: orangered !important;
-}
-
-.nav-item  a{
-  font-family: "Poppins", sans-serif !important;
-}
-
-button > a {
-  font-family: "Poppins", sans-serif !important;
 }

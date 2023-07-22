@@ -14,9 +14,10 @@
 }
 
 .testimonial {
-  width: 25%;
+  width: 350px;
   margin: 0 15px 30px 15px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 10px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -25,6 +26,7 @@
   height: 200px;
   width: 100%;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .quote {
@@ -33,6 +35,7 @@
   line-height: 1.5;
   margin-bottom: 20px;
   height: 50px;
+  margin-top: 10px;
 }
 
 .author {
