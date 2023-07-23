@@ -1,8 +1,10 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"net/http"
+	"personal-web/connection"
 	"strconv"
 	"strings"
 	"text/template"
@@ -21,33 +23,35 @@ type project struct {
 }
 
 var dataProject = []project{
-	{
-		Title:       "FAKTA BANGET NICH !",
-		Start:       "24/06/2023",
-		End:         "27/06/2023",
-		Duration:    "3 hari",
-		Description: "MAU TAU FAKTA GA BRO ? RAHASIA DAPUR NIH !",
-		Tech:        []string{"js", "bootstrap", "golang", "react"},
-	},
-	{
-		Title:       "GOKIL SIH INI CUY !",
-		Start:       "24/06/2023",
-		End:         "27/06/2023",
-		Duration:    "3 hari",
-		Description: "LU KEREN GUA KEREN, KITA BERDUA ? KEREN !",
-		Tech:        []string{"js", "bootstrap", "golang", "react"},
-	},
-	{
-		Title:       "AZEEEEKKKK !",
-		Start:       "24/06/2023",
-		End:         "27/06/2023",
-		Duration:    "3 hari",
-		Description: "WAHHH KEREN BANGET LU BRAYY, RESCPECT !",
-		Tech:        []string{"js", "bootstrap", "golang", "react"},
-	},
+	// {
+	// 	Title:       "FAKTA BANGET NICH !",
+	// 	Start:       "24/06/2023",
+	// 	End:         "27/06/2023",
+	// 	Duration:    "3 hari",
+	// 	Description: "MAU TAU FAKTA GA BRO ? RAHASIA DAPUR NIH !",
+	// 	Tech:        []string{"js", "bootstrap", "golang", "react"},
+	// },
+	// {
+	// 	Title:       "GOKIL SIH INI CUY !",
+	// 	Start:       "24/06/2023",
+	// 	End:         "27/06/2023",
+	// 	Duration:    "3 hari",
+	// 	Description: "LU KEREN GUA KEREN, KITA BERDUA ? KEREN !",
+	// 	Tech:        []string{"js", "bootstrap", "golang", "react"},
+	// },
+	// {
+	// 	Title:       "AZEEEEKKKK !",
+	// 	Start:       "24/06/2023",
+	// 	End:         "27/06/2023",
+	// 	Duration:    "3 hari",
+	// 	Description: "WAHHH KEREN BANGET LU BRAYY, RESCPECT !",
+	// 	Tech:        []string{"js", "bootstrap", "golang", "react"},
+	// },
 }
 
 func main() {
+	connection.DatabaseConnect()
+
 	e := echo.New()
 
 	e.Static("/public", "public")
@@ -77,14 +81,35 @@ func home(c echo.Context) error {
 	return tmpl.Execute(c.Response(), nil)
 }
 func myProject(c echo.Context) error {
+	data, _ := connection.Conn.Query(context.Background(), "SELECT  name, start_date, end_date, description, tech FROM b48s1.tahap1")
+
+	fmt.Println(data)
+	var result []project
+	for data.Next() {
+		var each = project{}
+
+		err := data.Scan(&each.Title, &each.Start, &each.End, &each.Description, &each.Tech)
+		if err != nil {
+			fmt.Println(err.Error())
+			return c.JSON(http.StatusInternalServerError, map[string]string{"Message": err.Error()})
+		}
+		fmt.Println(each)
+
+		// each.Author = "Abel Dustin"
+
+		result = append(result, each)
+	}
+
+	fmt.Println(result)
+
+	projects := map[string]interface{}{
+		"Projects": result,
+	}
 	var tmpl, err = template.ParseFiles("views/my-project.html")
+	fmt.Println(projects)
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
-	}
-
-	projects := map[string]interface{}{
-		"projects": dataProject,
 	}
 
 	return tmpl.Execute(c.Response(), projects)
