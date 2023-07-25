@@ -14,39 +14,32 @@ import (
 )
 
 type project struct {
+	Id          int
 	Title       string
-	Start       string
-	End         string
+	Start       time.Time
+	End         time.Time
 	Duration    string
 	Description string
 	Tech        []string
 }
 
 var dataProject = []project{
-	// {
-	// 	Title:       "FAKTA BANGET NICH !",
-	// 	Start:       "24/06/2023",
-	// 	End:         "27/06/2023",
-	// 	Duration:    "3 hari",
-	// 	Description: "MAU TAU FAKTA GA BRO ? RAHASIA DAPUR NIH !",
-	// 	Tech:        []string{"js", "bootstrap", "golang", "react"},
-	// },
-	// {
-	// 	Title:       "GOKIL SIH INI CUY !",
-	// 	Start:       "24/06/2023",
-	// 	End:         "27/06/2023",
-	// 	Duration:    "3 hari",
-	// 	Description: "LU KEREN GUA KEREN, KITA BERDUA ? KEREN !",
-	// 	Tech:        []string{"js", "bootstrap", "golang", "react"},
-	// },
-	// {
-	// 	Title:       "AZEEEEKKKK !",
-	// 	Start:       "24/06/2023",
-	// 	End:         "27/06/2023",
-	// 	Duration:    "3 hari",
-	// 	Description: "WAHHH KEREN BANGET LU BRAYY, RESCPECT !",
-	// 	Tech:        []string{"js", "bootstrap", "golang", "react"},
-	// },
+	{
+		Title:       "FAKTA BANGET NICH !",
+		Start:       time.Now(),
+		End:         time.Now(),
+		Duration:    "3 hari",
+		Description: "MAU TAU FAKTA GA BRO ? RAHASIA DAPUR NIH !",
+		Tech:        []string{"js", "bootstrap", "golang", "react"},
+	},
+	{
+		Title:       "KEREN BRO !",
+		Start:       time.Now(),
+		End:         time.Now(),
+		Duration:    "3 hari",
+		Description: "MAU TAU FAKTA GA BRO ? RAHASIA DAPUR NIH !",
+		Tech:        []string{"js", "bootstrap", "golang", "react"},
+	},
 }
 
 func main() {
@@ -62,6 +55,7 @@ func main() {
 	e.GET("/project-detail/:id", projectDetail)
 	e.GET("/testimonial", testimonial)
 	e.GET("/project", addProject)
+	e.GET("/helo", helo)
 
 	e.POST("/edit-project/:id", editProject)
 	e.POST("/delete-project/:id", deleteProject)
@@ -69,6 +63,10 @@ func main() {
 	e.POST("/project", addProject)
 
 	e.Logger.Fatal(e.Start("localhost:5000"))
+}
+
+func helo(c echo.Context) error {
+	return c.JSON(http.StatusOK, "hello world")
 }
 
 func home(c echo.Context) error {
@@ -81,16 +79,15 @@ func home(c echo.Context) error {
 	return tmpl.Execute(c.Response(), nil)
 }
 func myProject(c echo.Context) error {
-	data, _ := connection.Conn.Query(context.Background(), "SELECT  name, start_date, end_date, description, tech FROM b48s1.tahap1")
+	data, _ := connection.Conn.Query(context.Background(), "SELECT id, name, start_date, end_date, description, tech, duration FROM b48s1.tahap1")
 
-	fmt.Println(data)
 	var result []project
 	for data.Next() {
 		var each = project{}
 
-		err := data.Scan(&each.Title, &each.Start, &each.End, &each.Description, &each.Tech)
+		err := data.Scan(&each.Id, &each.Title, &each.Start, &each.End, &each.Description, &each.Tech, &each.Duration)
 		if err != nil {
-			fmt.Println(err.Error())
+			fmt.Println(err, "error")
 			return c.JSON(http.StatusInternalServerError, map[string]string{"Message": err.Error()})
 		}
 		fmt.Println(each)
@@ -100,13 +97,12 @@ func myProject(c echo.Context) error {
 		result = append(result, each)
 	}
 
-	fmt.Println(result)
+	result = append(dataProject, result...)
 
 	projects := map[string]interface{}{
 		"Projects": result,
 	}
 	var tmpl, err = template.ParseFiles("views/my-project.html")
-	fmt.Println(projects)
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
@@ -123,12 +119,32 @@ func contact(c echo.Context) error {
 
 	return tmpl.Execute(c.Response(), nil)
 }
+
 func projectDetail(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 
+	data, _ := connection.Conn.Query(context.Background(), "SELECT id, name, start_date, end_date, description, tech, duration FROM b48s1.tahap1")
+
+	var result []project
+	for data.Next() {
+		var each = project{}
+
+		err := data.Scan(&each.Id, &each.Title, &each.Start, &each.End, &each.Description, &each.Tech, &each.Duration)
+		if err != nil {
+			fmt.Println(err, "error")
+			return c.JSON(http.StatusInternalServerError, map[string]string{"Message": err.Error()})
+		}
+		fmt.Println(each)
+
+		result = append(result, each)
+	}
+
 	var ProjectDetail = project{}
 
-	for index, item := range dataProject {
+	result = append(dataProject, result...)
+
+	for index, item := range result {
+
 		if id == index {
 			ProjectDetail = project{
 				Title:       item.Title,
@@ -215,8 +231,8 @@ func addedProject(c echo.Context) error {
 
 	var newProject = project{
 		Title:       name,
-		Start:       start,
-		End:         end,
+		Start:       startDate,
+		End:         endDate,
 		Duration:    durationOutput,
 		Description: desc,
 		Tech:        Tech,
